@@ -7,7 +7,11 @@
 \*------------------------------------*/
 
 :root {
-
+    --global-color-alpha-light: #4f95ff;
+    --global-color-alpha: #3385ff;
+    --global-color-alpha-dark: #2e77e6;
+    --global-color-alpha-transparent: #3385ff4d;
+    --global-color-alpha-x-transparent: #3385ff80;
 }
 
 /* CSS variables here */
@@ -26,11 +30,11 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: #f5f6fa;
 }
 
 *,
@@ -53,7 +57,7 @@ html {
 }
 
 ::selection {
-    background: HotPink;
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
@@ -158,18 +162,23 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: var(--global-color-alpha);
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: var(--global-color-alpha-light);
+}
+
+label,
+input {
+    display: block;
 }
 
 /*------------------------------------*\
@@ -189,6 +198,7 @@ a:focus {
 
 .o-row--login {
     /* stuff here to align the card */
+    height: 100%;
 }
 
 /* size modifiers */
@@ -432,17 +442,73 @@ a:focus {
     Website main logo
 */
 
+.c-logo {
+    display: flex;
+    justify-content: center;
+    height: 24px;
+}
+
+.c-logo__inner-circle {
+    fill: var(--global-color-alpha);
+}
+
+.c-logo__outer-circle {
+    fill: #1B4186;
+}
+
+.c-logo__text {       
+    fill: var(--global-color-alpha-dark);
+}
+
+.c-logo__symbol {
+    height: 100%;
+    display: block;
+}
+
 /*
     Component: Card
     ---
     Card with box shadow
 */
 
+.c-card {
+    background-color: #FFFFFF;
+    border: 1px #000000;
+    border-radius: 3px;
+    box-shadow: 0 2 4 1px #00000012;
+}
+
+.c-card__body {
+    padding: 48px;
+}
+
+.c-card__title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21px;
+    padding-top: 48px;
+    text-align: center;
+}
+
+.c-card__footer {
+    padding: 12px;
+    text-align: center;
+}
+
 /*
     Component: Forms
     ---
     Everything form related here
 */
+
+.c-form-field {
+
+}
+
+.c-form-field--option {
+    display: flex;
+    align-items: center;
+}
 
 /*
     Component: Input
@@ -451,10 +517,30 @@ a:focus {
 */
 
 .c-input {
+    /*reset*/
+    /*all: unset; Opletten, verwijdert alles*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
+    /*nieuwe styles*/
+    font-family: inherit; /*expliciet vragen om naar parent te kijken*/
+    color: var(--global-color-alpha-dark);
+    font-size: 16px;
+    line-height: 24px;
+
+    border: 1px solid #E2E3E7;
+    border-radius: 3px;
+    width: 100%;
+
+    padding: 23px 23px;
+
+    outline: none;
 }
 
 .c-input:focus {
+    border-color: var(--global-color-alpha);
+    box-shadow: 0 0 0 3px var(--global-color-alpha-transparent);
 }
 
 /*
@@ -464,7 +550,15 @@ a:focus {
 */
 
 .c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274;
+}
 
+.c-label--option {
+    margin-bottom: 0px;
+    margin-left: 8px;
 }
 
 /* If a input is focused within the form-field class change te color of the label */
@@ -480,19 +574,29 @@ a:focus {
 */
 
 .c-button {
-
+    background-color: var(--global-color-alpha);
+    border: 1 solid var(--global-color-alpha-dark);
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-weight: 600;
+    height: 48px;
+    line-height: 20px;
+    width: 100%;
 }
 
 .c-button:hover {
-
+    background-color: var(--global-color-alpha-light);
 }
 
 .c-button:focus {
-
+    outline: none;
+    background-color: var(--global-color-alpha);
+    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+    
 }
 
 .c-button:active {
-
+    background-color: var(--global-color-alpha-dark);
 }
 
 .c-button--block {
